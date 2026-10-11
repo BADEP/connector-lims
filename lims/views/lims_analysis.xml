@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2023 Dixmit
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
-    <record model="ir.ui.view" id="lims_analysis_form_view">
+    <record id="lims_analysis_form_view" model="ir.ui.view">
         <field name="name">lims.analysis.form (in lims)</field>
         <field name="model">lims.analysis</field>
         <field name="arch" type="xml">
@@ -25,7 +25,7 @@
             </form>
         </field>
     </record>
-    <record model="ir.ui.view" id="lims_analysis_search_view">
+    <record id="lims_analysis_search_view" model="ir.ui.view">
         <field name="name">lims.analysis.search (in lims)</field>
         <field name="model">lims.analysis</field>
         <field name="arch" type="xml">
@@ -81,7 +81,7 @@
             </search>
         </field>
     </record>
-    <record model="ir.ui.view" id="lims_analysis_list_base_view">
+    <record id="lims_analysis_list_base_view" model="ir.ui.view">
         <field name="name">lims.analysis.list (in lims)</field>
         <field name="model">lims.analysis</field>
         <field name="priority" eval="16" />
@@ -146,7 +146,7 @@
             </list>
         </field>
     </record>
-    <record model="ir.ui.view" id="lims_analysis_list_creation_view">
+    <record id="lims_analysis_list_creation_view" model="ir.ui.view">
         <field name="name">lims.analysis.list (in lims)</field>
         <field name="model">lims.analysis</field>
         <field name="inherit_id" ref="lims_analysis_list_base_view" />
@@ -196,7 +196,7 @@
             </field>
         </field>
     </record>
-    <record model="ir.ui.view" id="lims_analysis_list_view">
+    <record id="lims_analysis_list_view" model="ir.ui.view">
         <field name="name">lims.analysis.list (in lims)</field>
         <field name="model">lims.analysis</field>
         <field name="inherit_id" ref="lims_analysis_list_base_view" />
@@ -219,7 +219,7 @@
             </field>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="lims_analysis_act_window">
+    <record id="lims_analysis_act_window" model="ir.actions.act_window">
         <field name="name">Analysis</field>
         <field name="res_model">lims.analysis</field>
         <field name="view_mode">list,form</field>
@@ -228,7 +228,7 @@
         <field name="context">{}</field>
     </record>
 
-    <record model="ir.ui.menu" id="lims_analysis_menu">
+    <record id="lims_analysis_menu" model="ir.ui.menu">
         <field name="name">Analysis</field>
         <field name="parent_id" ref="lims_sample_root" />
         <field name="action" ref="lims_analysis_act_window" />

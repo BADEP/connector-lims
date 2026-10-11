@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Dixmit
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo noupdate="1">
-    <record model="res.partner" id="lims_demo_laboratory">
+    <record id="lims_demo_laboratory" model="res.partner">
         <field name="name">Demo Laboratory</field>
         <field name="parent_id" ref="base.main_partner" />
     </record>
-    <record model="lims.sample.type" id="lims_water_sample_type">
+    <record id="lims_water_sample_type" model="lims.sample.type">
         <field name="name">Water</field>
     </record>
-    <record model="lims.sample.type" id="lims_blood_sample_type">
+    <record id="lims_blood_sample_type" model="lims.sample.type">
         <field name="name">Blood</field>
     </record>
-    <record model="lims.analyte" id="lims_calcium">
+    <record id="lims_calcium" model="lims.analyte">
         <field name="name">Calcium</field>
         <field name="uom_id" ref="product_uom_mg" />
         <field name="code">Ca</field>
     </record>
-    <record model="lims.analyte.specs" id="lims_calcium_spec">
+    <record id="lims_calcium_spec" model="lims.analyte.specs">
         <field name="analyte_id" ref="lims_calcium" />
         <field name="sample_type_id" ref="lims_water_sample_type" />
         <field name="min_value" eval="9" />
@@ -27,12 +27,12 @@
         <field name="max_warning_value" eval="10.5" />
         <field name="max_operator">gt</field>
     </record>
-    <record model="lims.analyte" id="lims_magnesium">
+    <record id="lims_magnesium" model="lims.analyte">
         <field name="name">Magnesium</field>
         <field name="uom_id" ref="product_uom_mg" />
         <field name="code">Mg</field>
     </record>
-    <record model="lims.analyte.specs" id="lims_magnesium_spec">
+    <record id="lims_magnesium_spec" model="lims.analyte.specs">
         <field name="analyte_id" ref="lims_magnesium" />
         <field name="sample_type_id" ref="lims_water_sample_type" />
         <field name="min_value" eval="9" />
@@ -42,12 +42,12 @@
         <field name="max_warning_value" eval="10.5" />
         <field name="max_operator">gt</field>
     </record>
-    <record model="lims.analyte" id="lims_total_hardness">
+    <record id="lims_total_hardness" model="lims.analyte">
         <field name="name">Total Hardness</field>
         <field name="uom_id" ref="product_uom_mg" />
         <field name="code">THCaCO3</field>
     </record>
-    <record model="lims.analyte.specs" id="lims_total_hardness_spec">
+    <record id="lims_total_hardness_spec" model="lims.analyte.specs">
         <field name="analyte_id" ref="lims_total_hardness" />
         <field name="sample_type_id" ref="lims_water_sample_type" />
         <field name="min_value" eval="9" />
@@ -57,12 +57,12 @@
         <field name="max_warning_value" eval="10.5" />
         <field name="max_operator">gt</field>
     </record>
-    <record model="lims.analyte" id="lims_ph">
+    <record id="lims_ph" model="lims.analyte">
         <field name="name">pH</field>
         <field name="uom_id" ref="product_uom_mg" />
         <field name="code">pH</field>
     </record>
-    <record model="lims.analyte.specs" id="lims_ph_blood_spec">
+    <record id="lims_ph_blood_spec" model="lims.analyte.specs">
         <field name="analyte_id" ref="lims_ph" />
         <field name="sample_type_id" ref="lims_blood_sample_type" />
         <field name="min_value" eval="7.35" />

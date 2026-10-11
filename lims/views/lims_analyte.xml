@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Dixmit
      License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl). -->
 <odoo>
-    <record model="ir.ui.view" id="lims_analyte_form_view">
+    <record id="lims_analyte_form_view" model="ir.ui.view">
         <field name="model">lims.analyte</field>
         <field name="arch" type="xml">
             <form>
@@ -65,7 +65,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="lims_analyte_search_view">
+    <record id="lims_analyte_search_view" model="ir.ui.view">
         <field name="model">lims.analyte</field>
         <field name="arch" type="xml">
             <search>
@@ -75,7 +75,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="lims_analyte_tree_view">
+    <record id="lims_analyte_tree_view" model="ir.ui.view">
         <field name="model">lims.analyte</field>
         <field name="arch" type="xml">
             <list>
@@ -85,7 +85,7 @@
         </field>
     </record>
 
-    <record model="ir.actions.act_window" id="lims_analyte_act_window">
+    <record id="lims_analyte_act_window" model="ir.actions.act_window">
         <field name="name">Analytes</field>
         <field name="res_model">lims.analyte</field>
         <field name="path">lims_analyte</field>
@@ -94,7 +94,7 @@
         <field name="context">{}</field>
     </record>
 
-    <record model="ir.ui.menu" id="lims_analyte_menu">
+    <record id="lims_analyte_menu" model="ir.ui.menu">
         <field name="name">Analytes</field>
         <field name="parent_id" ref="lims_config_root" />
         <field name="action" ref="lims_analyte_act_window" />
