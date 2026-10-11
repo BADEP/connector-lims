@@ -4,11 +4,11 @@
      License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl). -->
     <t t-name="lims.LaboratoryEvaluationField" owl="1">
         <div>
-            <span class="text-success fw-bold" t-if="value === 'valid'">=</span>
-            <i class="fa fa-angle-down text-warning" t-elif="value === 'min_warning'" />
-            <i class="fa fa-angle-double-down text-danger" t-elif="value === 'min'" />
-            <i class="fa fa-angle-up text-warning" t-elif="value === 'max_warning'" />
-            <i class="fa fa-angle-double-up text-danger" t-elif="value === 'max'" />
+            <span class="text-success fw-bold" t-if="this.value === 'valid'">=</span>
+            <i class="oi text-warning" data-icon="keyboard_arrow_down" t-elif="this.value === 'min_warning'" />
+            <i class="oi text-danger" data-icon="keyboard_double_arrow_down" t-elif="this.value === 'min'" />
+            <i class="oi text-warning" data-icon="keyboard_arrow_up" t-elif="this.value === 'max_warning'" />
+            <i class="oi text-danger" data-icon="keyboard_double_arrow_up" t-elif="this.value === 'max'" />
         </div>
     </t>
 </templates>

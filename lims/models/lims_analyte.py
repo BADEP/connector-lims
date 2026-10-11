@@ -1,6 +1,8 @@
 # Copyright 2026 Dixmit
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
+import typing
+
 from odoo import fields, models
 
 OPERATORS = [
@@ -14,7 +16,7 @@ OPERATORS = [
 class LimsAnalyte(models.Model):
     _name = "lims.analyte"
     _description = "Lims Analyte"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit: typing.ClassVar[list[str]] = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char(required=True, translate=True)
     code = fields.Char(required=True)
