@@ -1,14 +1,12 @@
 # Copyright 2023 Dixmit
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-import typing
-
 from odoo import api, fields, models
 
 
 class LimsSample(models.Model):
     _name = "lims.sample"
-    _inherit: typing.ClassVar[list[str]] = ["mail.thread", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin"]  # noqa: RUF012
     _description = "Sample"
     _rec_name = "identifier"
     _check_company_auto = True
