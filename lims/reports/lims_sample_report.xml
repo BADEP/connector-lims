@@ -5,7 +5,6 @@
         <field name="model">lims.sample</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">lims.lims_sample_report_template</field>
-        <field name="report_file">lims.lims_sample_report_template</field>
         <field name="binding_model_id" ref="model_lims_sample" />
         <field name="binding_type">report</field>
     </record>

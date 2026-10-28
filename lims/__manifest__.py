@@ -3,9 +3,8 @@
 
 {
     "name": "Lims",
-    "summary": """
-        Laboratory Information Management System""",
-    "version": "19.0.1.0.0",
+    "summary": "Laboratory Information Management System",
+    "version": "20.0.1.0.0",
     "license": "LGPL-3",
     "author": "Dixmit, Creu Blanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/connector-lims",
@@ -14,7 +13,6 @@
     # things that you cannot understand from odoo...
     "data": [
         "security/security.xml",
-        "security/ir.model.access.csv",
         "data/ir_sequence_data.xml",
         "data/uom_data.xml",
         "views/menu.xml",
@@ -24,6 +22,7 @@
         "views/lims_analysis.xml",
         "reports/lims_sample_report.xml",
         "views/res_config_settings.xml",
+        "security/ir.access.csv",
     ],
     "demo": ["demo/demo.xml"],
     "assets": {

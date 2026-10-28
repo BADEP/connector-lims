@@ -147,6 +147,7 @@ class LimsAnalysis(models.Model):
             return value > warning
         if operator == "ge":
             return value >= warning
+        return None
 
     @api.model_create_multi
     def create(self, mvals):
@@ -235,7 +236,7 @@ class LimsAnalysis(models.Model):
         verify_param = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("lims.unforce_double_verification_manager")
+            .get_str("lims.unforce_double_verification_manager")
         ) and self.env.user.has_group("lims.group_lims_manager")
         for record in self:
             record.can_verify = record.state == "to_be_verified" and (

@@ -14,7 +14,7 @@ OPERATORS = [
 class LimsAnalyte(models.Model):
     _name = "lims.analyte"
     _description = "Lims Analyte"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin"]  # noqa: RUF012
 
     name = fields.Char(required=True, translate=True)
     code = fields.Char(required=True)

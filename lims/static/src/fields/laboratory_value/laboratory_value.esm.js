@@ -1,8 +1,7 @@
 // Copyright 2026 Dixmit
 // License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
-const {Component, useEffect, useRef, useState} = owl;
-
+import {Component, proxy, signal, untrack, useProps} from "@odoo/owl";
 import {
   areDatesEqual,
   deserializeDate,
@@ -12,10 +11,12 @@ import {
   serializeDate,
   serializeDateTime,
 } from "@web/core/l10n/dates";
+import {useLayoutEffect} from "@web/owl2/utils";
 import {formatDate, formatDateTime, formatFloat} from "@web/views/fields/formatters";
 
 import {CheckBox} from "@web/core/checkbox/checkbox";
 import {SelectMenu} from "@web/core/select_menu/select_menu";
+import {BadgeTag} from "@web/core/tags_list/badge_tag";
 import {TagsList} from "@web/core/tags_list/tags_list";
 
 import {parseFloat} from "@web/views/fields/parsers";
@@ -26,11 +27,21 @@ import {useInputField} from "@web/views/fields/input_field_hook";
 import {useTagNavigation} from "@web/core/record_selectors/tag_navigation_hook";
 
 export class LaboratoryValueField extends Component {
+  static template = "lims.LaboratoryValueField";
+  static components = {BadgeTag, CheckBox, SelectMenu, TagsList};
+  props = useProps(standardFieldProps);
+  rootRef = signal.ref();
+  numpadDecimalRef = signal.ref();
+  textInputRef = signal.ref();
+  charInputRef = signal.ref();
+  dateInputRef = signal.ref();
+  multiselectionInputRef = signal.ref();
+
   setup() {
     super.setup(...arguments);
-    this.numpadInputRef = useInputField({
+    useInputField({
       getValue: () => this.value,
-      refName: "numpadDecimal",
+      ref: this.numpadDecimalRef,
       parse: (v) => {
         return {
           ...this.props.record.data[this.props.name],
@@ -38,16 +49,16 @@ export class LaboratoryValueField extends Component {
         };
       },
     });
-    this.textInputRef = useInputField({
+    useInputField({
       getValue: () => this.value,
-      refName: "textInput",
+      ref: this.textInputRef,
       parse: (v) => {
         return {...this.props.record.data[this.props.name], value: v};
       },
     });
-    this.charInputRef = useInputField({
+    useInputField({
       getValue: () => this.value,
-      refName: "charInput",
+      ref: this.charInputRef,
       parse: (v) => {
         return {...this.props.record.data[this.props.name], value: v};
       },
@@ -75,7 +86,7 @@ export class LaboratoryValueField extends Component {
         return pickerProps;
       };
       const dateTimePicker = useDateTimePicker({
-        target: "root",
+        target: this.rootRef,
         showSeconds: true,
         get pickerProps() {
           return getPickerProps();
@@ -107,24 +118,22 @@ export class LaboratoryValueField extends Component {
           }
         },
       });
-      this.state = useState(dateTimePicker.state);
-      this.picker = useState({activeInput: ""});
+      this.state = proxy(dateTimePicker.state);
+      this.picker = proxy({activeInput: ""});
       this.openPicker = dateTimePicker.open;
-      this.dateInput = useRef("dateInput");
-      useEffect(
+      useLayoutEffect(
         () => {
-          if (
-            this.dateInput.el?.getAttribute("data-field") === this.picker.activeInput
-          ) {
-            this.dateInput.el.focus();
+          const el = this.dateInputRef();
+          if (el?.getAttribute("data-field") === this.picker.activeInput) {
+            el.focus();
             this.openPicker();
           }
         },
-        () => [this.dateInput.el?.tagName, this.picker.activeInput]
+        () => [untrack(this.dateInputRef)?.tagName, this.picker.activeInput]
       );
     }
     if (this.type === "multiselection") {
-      useTagNavigation("multiselectionInput", {
+      useTagNavigation(this.multiselectionInputRef, {
         isEnabled: () => !this.props.readonly,
         delete: (index) => this.deleteTagByIndex(index),
       });
@@ -197,7 +206,7 @@ export class LaboratoryValueField extends Component {
     this.triggerDateIsDirty(true);
   }
   async onDateChange() {
-    const value = this.dateInput.el.value;
+    const value = this.dateInputRef().value;
     if (!value) {
       this.state.value = null;
       this.triggerDateIsDirty(false);
@@ -242,11 +251,6 @@ export class LaboratoryValueField extends Component {
   }
 }
 
-LaboratoryValueField.template = "lims.LaboratoryValueField";
-LaboratoryValueField.components = {CheckBox, SelectMenu, TagsList};
-LaboratoryValueField.props = {
-  ...standardFieldProps,
-};
 export const laboratoryValueField = {
   component: LaboratoryValueField,
   supportedTypes: ["json"],

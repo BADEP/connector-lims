@@ -6,7 +6,7 @@ from odoo import api, fields, models
 
 class LimsSample(models.Model):
     _name = "lims.sample"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin"]  # noqa: RUF012
     _description = "Sample"
     _rec_name = "identifier"
     _check_company_auto = True
@@ -134,7 +134,7 @@ class LimsSample(models.Model):
 
     def get_analysis(self):
         return self.analysis_ids.filtered(
-            lambda r: r.state not in ["invalid"] and r.display_type == "analyte"
+            lambda r: r.state != "invalid" and r.display_type == "analyte"
         )
 
     def _get_progress(self):
