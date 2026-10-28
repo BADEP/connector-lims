@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="lims_sample_report" model="ir.actions.report">
         <field name="name">LIMS Sample Report</field>
@@ -26,24 +26,24 @@
                         <div class="page mb-4">
                             <div id="informations" class="row mb-4">
                                 <div
-                                    class="col"
                                     t-if="o.received_date"
+                                    class="col"
                                     name="received_date"
                                 >
                                     <strong>Received on</strong>
                                     <div t-field="o.received_date" />
                                 </div>
                                 <div
-                                    class="col"
                                     t-if="o.published_date"
+                                    class="col"
                                     name="published_date"
                                 >
                                     <strong>Published on</strong>
                                     <div t-field="o.published_date" />
                                 </div>
                                 <div
-                                    class="col"
                                     t-if="o.sample_type_id"
+                                    class="col"
                                     name="sample_type_id"
                                 >
                                     <strong>Sample Type</strong>
@@ -122,9 +122,9 @@
                                                     t-elif="analysis.display_type in ('line_section', 'line_subsection')"
                                                 >
                                                     <td
-                                                        colspan="99"
                                                         class="o_td_section"
                                                         t-att-class="padding_class"
+                                                        colspan="99"
                                                     >
                                                         <h2
                                                             t-field="analysis.name"
@@ -148,8 +148,8 @@
                                                         class="o_field_laboratory_value text-end"
                                                     >
                                                         <ul
-                                                            class="text-start"
                                                             t-if="analysis.value['result_type'] == 'multiselection-check'"
+                                                            class="text-start"
                                                         >
                                                             <li
                                                                 t-foreach="analysis.value.get('value', {})"
@@ -160,8 +160,8 @@
                                                             </li>
                                                         </ul>
                                                         <i
-                                                            t-attf-class="fa {{'fa-check' if analysis.value['value'] else 'fa-times'}}"
                                                             t-elif="analysis.value['result_type'] == 'boolean'"
+                                                            t-attf-class="fa {{'fa-check' if analysis.value['value'] else 'fa-times'}}"
                                                         />
                                                         <span
                                                             t-out="analysis._get_report_value()"
@@ -179,24 +179,24 @@
                                                         name="analysis_evaluation "
                                                     >
                                                         <span
-                                                            class="text-success fw-bold"
                                                             t-if="analysis.value_state == 'valid'"
+                                                            class="text-success fw-bold"
                                                         >=</span>
                                                         <i
-                                                            class="fa fa-angle-down text-warning"
                                                             t-elif="analysis.value_state == 'min_warning'"
+                                                            class="fa fa-angle-down text-warning"
                                                         />
                                                         <i
-                                                            class="fa fa-angle-double-down text-danger"
                                                             t-elif="analysis.value_state == 'min'"
+                                                            class="fa fa-angle-double-down text-danger"
                                                         />
                                                         <i
-                                                            class="fa fa-angle-up text-warning"
                                                             t-elif="analysis.value_state == 'max_warning'"
+                                                            class="fa fa-angle-up text-warning"
                                                         />
                                                         <i
-                                                            class="fa fa-angle-double-up text-danger"
                                                             t-elif="analysis.value_state == 'max'"
+                                                            class="fa fa-angle-double-up text-danger"
                                                         />
                                                     </td>
                                                     <td name="reference_value" class="">

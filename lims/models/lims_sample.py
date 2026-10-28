@@ -108,8 +108,9 @@ class LimsSample(models.Model):
 
     def _check_to_verify(self):
         return not self.analysis_ids.filtered(
-            lambda r: r.state in ["registered", "to_analyze"]
-            and r.display_type == "analyte"
+            lambda r: (
+                r.state in ["registered", "to_analyze"] and r.display_type == "analyte"
+            )
         )
 
     def _check_to_verify_vals(self):
@@ -117,8 +118,10 @@ class LimsSample(models.Model):
 
     def _check_verify(self):
         return not self.analysis_ids.filtered(
-            lambda r: r.state in ["registered", "to_analyze", "to_be_verified"]
-            and r.display_type == "analyte"
+            lambda r: (
+                r.state in ["registered", "to_analyze", "to_be_verified"]
+                and r.display_type == "analyte"
+            )
         )
 
     def _check_verify_vals(self):
